@@ -7,14 +7,21 @@ class Counter extends React.Component {
     this.handleDecrement = this.handleDecrement.bind(this);
   }
   handleDecrement() {
-    this.setState = this.count - 1;
+    this.setState((curState) => {
+      return { count: curState.count - 1 };
+    });
+  }
+  handleIncrement() {
+    this.setState((curState) => {
+      return { count: curState.count + 1 };
+    });
   }
   render() {
     return (
       <div>
         <button onClick={() => this.handleDecrement()}>-</button>
         <span>{this.state.count}</span>
-        <button>+</button>
+        <button onClick={() => this.handleIncrement()}>+</button>
       </div>
     );
   }
